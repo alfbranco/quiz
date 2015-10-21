@@ -1,0 +1,56 @@
+
+function loadArrayVerb() {
+verb[0][0] = "see";
+verb[0][1] = "drink";
+verb[0][2] = "say";
+verb[0][3] = "tell";
+verb[0][4] = "speak";
+verb[1][0] = "go";
+verb[1][1] = "do";
+verb[1][2] = "sell";
+verb[1][3] = "swim";
+verb[1][4] = "begin";
+verb[2][0] = "break";
+verb[2][1] = "bring"
+verb[2][2] = "know"
+verb[2][3] = "have"
+verb[2][4] = "eat"
+verb[3][0] = "forget"
+verb[3][1] = "give"
+verb[3][2] = "come"
+verb[3][3] = "let"
+verb[3][4] = "make"
+verb[4][0] = "pay"
+verb[4][1] = "put"
+verb[4][2] = "read"
+verb[4][3] = "send"
+verb[4][4] = "sit"
+}
+
+function loadArraySolution() {
+Solution[0][0] = "saw"
+Solution[0][1] = "drank"
+Solution[0][2] = "said"
+Solution[0][3] = "told"
+Solution[0][4] = "spoke"
+Solution[1][0] = "went"
+Solution[1][1] = "did"
+Solution[1][2] = "sold"
+Solution[1][3] = "swam"
+Solution[1][4] = "began"
+Solution[2][0] = "broke"
+Solution[2][1] = "brought"
+Solution[2][2] = "knew"
+Solution[2][3] = "had"
+Solution[2][4] = "ate"
+Solution[3][0] = "forgot"
+Solution[3][1] = "gave"
+Solution[3][2] = "came"
+Solution[3][3] = "let"
+Solution[3][4] = "made"
+Solution[4][0] = "paid"
+Solution[4][1] = "put"
+Solution[4][2] = "read"
+Solution[4][3] = "sent"
+Solution[4][4] = "sat"
+}

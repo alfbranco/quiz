@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<link rel="stylesheet" type="text/css" href="master.css"/>
+<script type="text/javascript" src="four_in_a_row.js"></script>
+<TITLE>Página normal sem título</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR></HEAD>
+<BODY onload = disableBtns(this.form) bgColor=#E2F7DF>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<CENTER>
+<FORM name=tictac><INPUT class="dark_button width" name=Start onclick=changeAll(this.form) type=button value=" start "><BR>
+  <INPUT name=player1_name value="Player 1" size="20">&nbsp;<INPUT 
+name=player1 size=2 value=:0> <BR>
+  <INPUT name=player2_name 
+value="Player 2" size="20">&nbsp;<INPUT name=player2 size=2 value=:0> <BR>
+<P></P>
+            <TABLE border=1 borderColor=#111111 cellPadding=7 cellSpacing=7 style="BORDER-COLLAPSE: collapse">
+                <TBODY>
+                    <TR>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b0 onclick=change_b(this.form,0,0,0) type=button value="          " title='@@@' id = 'btn-00'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b1 onclick=change_b(this.form,0,1,1) type=button value="          " id = 'btn-01'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b2 onclick=change_b(this.form,0,2,2) type=button value="          "id = 'btn-02'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b3 onclick=change_b(this.form,0,3,3) type=button value="          " id = 'btn-03'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b4 onclick=change_b(this.form,0,4,4) type=button value="          "id = 'btn-04'>
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b5 onclick=change_b(tictac,1,0,5) type=button value="          "id = 'btn-10'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b6 onclick=change_b(this.form,1,1,6) type=button value="          "id = 'btn-11'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b7 onclick=change_b(this.form,1,2,7) type=button value="          "id = 'btn-12'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b8 onclick=change_b(this.form,1,3,8) type=button value="          "id = 'btn-13'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b9 onclick=change_b(this.form,1,4,9) type=button value="          "id = 'btn-14'>
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b10 onclick=change_b(tictac,2,0,10) type=button value="          "id = 'btn-20'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b11 onclick=change_b(this.form,2,1,11) type=button value="          "id = 'btn-21'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b12 onclick=change_b(this.form,2,2,12) type=button value="          "id = 'btn-22'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b13 onclick=change_b(this.form,2,3,13) type=button value="          "id = 'btn-23'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b14 onclick=change_b(this.form,2,4,14) type=button value="          "id = 'btn-24'>
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b15 onclick=change_b(tictac,3,0,15) type=button value="          "id = 'btn-30'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b16 onclick=change_b(this.form,3,1,16) type=button value="          "id = 'btn-31'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b17 onclick=change_b(this.form,3,2,17) type=button value="          "id = 'btn-32'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b18 onclick=change_b(this.form,3,3,18) type=button value="          "id = 'btn-33'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b19 onclick=change_b(this.form,3,4,19) type=button value="          "id = 'btn-34'>
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b20 onclick=change_b(tictac,4,0,20) type=button value="          "id = 'btn-40'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b21 onclick=change_b(this.form,4,1,21) type=button value="          "id = 'btn-41'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b22 onclick=change_b(this.form,4,2,22) type=button value="          "id = 'btn-42'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b23 onclick=change_b(this.form,4,3,23) type=button value="          "id = 'btn-43'>
+                        </TD>
+                        <TD align=middle bgColor=#c8d5d5>
+                            <INPUT class="dark_button width" name=b24 onclick=change_b(this.form,4,4,24) type=button value="          "id = 'btn-44'>
+                        </TD>
+                    </TR>
+                </TBODY>
+            </TABLE>
+
+<TEXTAREA cols=40 name=text rows=3></TEXTAREA> 
+<BR>Write in the box below the simple past form of one of the verbs and click on 
+the corresponding button <BR>&nbsp;<BR>&nbsp;<BR>&nbsp; 
+<BR></FORM></CENTER></BODY></HTML>

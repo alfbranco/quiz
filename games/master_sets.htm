@@ -1,0 +1,777 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title>Página normal sem título</title>
+</head>
+
+<body bgcolor="#008080">
+<script name="JavaScript">
+
+game = 0;
+player1=0;
+player2=0;
+var acertosP1=0;
+var acertosP2=0;
+var whogoesnow = "";
+var t = 1;
+var name1 = "";
+var name2 = "";
+var count_down = 30;
+var line = 6; // It is a 6 x 5 matrix....
+var col = 5;
+
+// if you change "line" and "col" you have to change btns, verb[][], Solution[][], empty[][], count_down 
+
+var verb_source = new makeArray2 (12,5);
+
+   verb_source[0][0] = "become";
+   verb_source[0][1] = "begin";
+   verb_source[0][2] = "build";
+   verb_source[0][3] = "buy";
+   verb_source[0][4] = "catch";
+   verb_source[1][0] = "choose";
+   verb_source[1][1] = "come";
+   verb_source[1][2] = "cost";
+   verb_source[1][3] = "do";
+   verb_source[1][4] = "draw";
+   verb_source[2][0] = "drink";
+   verb_source[2][1] = "drive";
+   verb_source[2][2] = "eat";
+   verb_source[2][3] = "fall";
+   verb_source[2][4] = "feed";
+   verb_source[3][0] = "fight"; 
+   verb_source[3][1] = "find";
+   verb_source[3][2] = "fly";
+   verb_source[3][3] = "forget";
+   verb_source[3][4] = "get";
+   verb_source[4][0] = "give";
+   verb_source[4][1] = "go";
+   verb_source[4][2] = "have";
+   verb_source[4][3] = "hear";
+   verb_source[4][4] = "keep";
+   verb_source[5][0] = "know";
+   verb_source[5][1] = "learn";
+   verb_source[5][2] = "leave";
+   verb_source[5][3] = "let";
+   verb_source[5][4] = "lose";
+   verb_source[6][0] = "make";
+   verb_source[6][1] = "mean";
+   verb_source[6][2] = "meet";
+   verb_source[6][3] = "pay";
+   verb_source[6][4] = "put";
+   verb_source[7][0] = "read";
+   verb_source[7][1] = "ring";
+   verb_source[7][2] = "run";
+   verb_source[7][3] = "say";
+   verb_source[7][4] = "see";
+   verb_source[8][0] = "sell"; 
+   verb_source[8][1] = "send";
+   verb_source[8][2] = "shut";
+   verb_source[8][3] = "sit";
+   verb_source[8][4] = "sleep";
+   verb_source[9][0] = "speak";
+   verb_source[9][1] = "spend";
+   verb_source[9][2] = "stand";
+   verb_source[9][3] = "steal";
+   verb_source[9][4] = "swim";
+   verb_source[10][0] = "take";
+   verb_source[10][1] = "teach";
+   verb_source[10][2] = "tell";
+   verb_source[10][3] = "think";
+   verb_source[10][4] = "understand";
+   verb_source[11][0] = "wake";
+   verb_source[11][1] = "wear";
+   verb_source[11][2] = "win"; 
+   verb_source[11][3] = "write" ;
+   verb_source[11][4] = "throw" ;
+
+var solution_source = new makeArray2 (12,5);
+
+   solution_source[0][0] = "became";
+   solution_source[0][1] = "began";
+   solution_source[0][2] = "built";
+   solution_source[0][3] = "bought";
+   solution_source[0][4] = "caught";
+   solution_source[1][0] = "chose";
+   solution_source[1][1] = "came";
+   solution_source[1][2] = "cost";
+   solution_source[1][3] = "did";
+   solution_source[1][4] = "drew";
+   solution_source[2][0] = "drank";
+   solution_source[2][1] = "drove";
+   solution_source[2][2] = "ate";
+   solution_source[2][3] = "fell";
+   solution_source[2][4] = "fed";
+   solution_source[3][0] = "fought"; 
+   solution_source[3][1] = "found";
+   solution_source[3][2] = "flew";
+   solution_source[3][3] = "forgot";
+   solution_source[3][4] = "got";
+   solution_source[4][0] = "gave";
+   solution_source[4][1] = "went";
+   solution_source[4][2] = "had";
+   solution_source[4][3] = "heard";
+   solution_source[4][4] = "kept";
+   solution_source[5][0] = "knew";
+   solution_source[5][1] = "learnt";
+   solution_source[5][2] = "left";
+   solution_source[5][3] = "let";
+   solution_source[5][4] = "lost";
+   solution_source[6][0] = "made";
+   solution_source[6][1] = "meant";
+   solution_source[6][2] = "met";
+   solution_source[6][3] = "paid";
+   solution_source[6][4] = "put";
+   solution_source[7][0] = "read";
+   solution_source[7][1] = "rang";
+   solution_source[7][2] = "ran";
+   solution_source[7][3] = "said";
+   solution_source[7][4] = "saw";
+   solution_source[8][0] = "sold"; 
+   solution_source[8][1] = "sent";
+   solution_source[8][2] = "shut";
+   solution_source[8][3] = "sat";
+   solution_source[8][4] = "slept";
+   solution_source[9][0] = "spoke";
+   solution_source[9][1] = "spent";
+   solution_source[9][2] = "stood";
+   solution_source[9][3] = "stole";
+   solution_source[9][4] = "swam";
+   solution_source[10][0] = "took";
+   solution_source[10][1] = "taught";
+   solution_source[10][2] = "told";
+   solution_source[10][3] = "thought";
+   solution_source[10][4] = "understood";
+   solution_source[11][0] = "woke";
+   solution_source[11][1] = "wore";
+   solution_source[11][2] = "won"; 
+   solution_source[11][3] = "wrote" ;
+   solution_source[11][4] = "threw" ;
+
+var verb = new makeArray2 (line,col);
+
+var solution = new makeArray2 (line,col);
+
+var empty = new makeArray2 (line,col);
+
+var neighborP1 = new makeArray2 (16,2);
+var count_neighborP1=0; // counter for the neighbors of corretP1.....
+
+var neighborP2 = new makeArray2 (16,2);
+var count_neighborP2=0;
+ 
+//initialize_array(neighborP1,16,2);
+//initialize_array(neighborP2,16,2);
+
+function report_All()
+{
+//ans = "TESTE !!!!";
+//ans += "t:" + t + "\n";
+//ans += "acertosP1:" + acertosP1 + "\n";
+//ans += "count_neighborP1:" + count_neighborP1 + "\n";
+//ans += list_neighbors_all(neighborP1,"neighborP1:");
+//ans += "acertosP2:" + acertosP2 + "\n";
+//ans += "count_neighborP2:" + count_neighborP2 + "\n";
+//ans += list_neighbors_all(neighborP2,"neighborP2:");
+//ans += list_empty();
+
+list_sources(verb_source,'verb source');
+//document.tictac.text.value = ans;
+}
+
+
+function initialize_array(_array,i,j)
+{
+        for (x=0 ; x < i; x++)
+          {
+          for (y=0 ;y < j; y++)
+              {
+              _array[x][y] = -1;
+              }
+          }
+ 
+}
+
+function load_verbs_solutions(game)
+{
+        for (x=0 ; x < 6; x++)
+          {
+          for (y=0 ;y < 5; y++)
+              {
+              verb[x][y] = verb_source[x+game][y];
+              solution[x][y] = solution_source[x+game][y];
+			  }
+          }
+ 
+}
+function reset_vars(p)
+{
+if (p==1)
+   {
+   acertosP1 = 0;
+   initialize_array(neighborP1,16,2);
+   count_neighborP1=0; 
+   }
+   else{
+       acertosP2 = 0;
+       initialize_array(neighborP2,16,2);
+       count_neighborP2=0;
+       }
+
+}
+
+function makeArray2 (x,y)
+{
+        var count;
+        this.length=x;
+        for (var count=0; count<=(x-1); count++)
+                this[count]=makeArray(y);
+}
+function makeArray (numElementos)
+{
+        var count;
+        var arranjo = new Array (numElementos) ;
+        for (count = 0; count <= (numElementos-1); count++)
+        {
+        arranjo[count]=0;
+        }
+        return(arranjo);
+       
+}        
+
+function updateScore(file,p1,p2)
+{
+if (p1 == 1) {player1++;}else{player2++}
+	file.player1.value= ':' + player1;
+	file.player2.value= ':' + player2;
+}
+
+
+
+function clearRecord(k)
+{
+acertosP = eval ('acertosP' + k);
+acertosP = 0;
+}
+
+function list_empty()
+{
+count = 0;
+ans = "empty - \n" ;      
+      for (x=0 ; x< line; x++)
+          {
+          for (y=0 ;y < col; y++)
+              {
+              ans = (ans + count + ":" + empty[x][y] + ";\n")
+              count++;
+              }
+          }
+
+return (ans);
+}
+function list_sources(_array,name)
+{
+ ans = (name + "\n");
+ count = 0;
+		for (x=0 ; x < 12; x++)
+          {
+          for (y=0 ;y < 5; y++)
+              {
+			  ans += count + _array[x][y] + '\n';
+              count++;
+			  }
+          }
+ document.tictac.text.value = ans;
+}
+
+function list_neighbors(_array,name)
+{
+ans = (name + " \n");
+x = 0;
+do {
+   i=_array[x][0];
+   j=_array[x][1];
+   ans += x + ":" + i + "," + j + ";\n";
+   x++;
+   }while ((x < _array.length)&&(_array[x][0]!=-1))
+return (ans);
+}
+function list_neighbors_all(_array,name)
+{
+ans = (name + " \n");
+x = 0;
+do {
+   i=_array[x][0];
+   j=_array[x][1];
+   ans += x + ":" + i + "," + j + ";\n";
+   x++;
+   }while ((x < _array.length)&&(_array[x][0]!=-1))
+return (ans);
+}
+function check_if_blocked(p)
+{
+name_blocked = eval ('name' + p);
+//document.tictac.text.value += p + ' Checking if ' + name_blocked + ' is blocked \n';
+neighbors = eval ("neighborP"+ p);
+acertosP = eval ('acertosP' + p);
+if (p==1){counter = count_neighborP1;}else{counter = count_neighborP2;} // set counter according to player      
+dead = true;
+//document.tictac.text.value += list_neighbors(neighbors,name_blocked);
+	if (counter > 0) // you can only be blocked if you've already scored....
+       {
+       for (x=0 ; x< counter; x++)
+           {
+               if (empty [neighbors[x][0]][neighbors[x][1]]== -1)
+                  {
+                  //alert ("There is no dead lock yet!" + neighbors[x][0] + neighbors[x][1]);
+                  dead = false;
+                  break;
+                  }
+           }
+        if (dead && (acertosP == 4))
+		   {
+		   dead = false;
+		   return (dead);
+		   }
+		}
+        else {
+			 dead = false;
+			 return (dead);
+			 }
+  if (dead == true)
+     {
+     alert (name_blocked + 'You are totally blocked!');
+	 mark_blocked(p);
+     reset_vars(p);
+	 }
+return (dead);
+}
+function mark_blocked(p)
+{
+file = document.tictac;
+if (p==1){key=1}else{key=0}
+z=0;
+            for (x=0 ; x< line; x++)
+               {
+               
+               for (y=0 ;y < col; y++)
+                   {
+                      if ( empty [x][y]== key)
+                      {
+                      but = eval("file.b" + z);
+                      but.value = "*****";
+                      empty[x][y]=-2;
+                      }
+                      z++;
+                      
+                   }
+               }
+
+}
+
+function turnchange(file,t)
+{
+        if (t == 1)
+          {
+          t = 0;
+          whogoesnow = name2;
+		  }
+          else{
+              t = 1;
+              whogoesnow = name1;
+              } 
+file.text.value = whogoesnow + ' IS PLAYING NOW';
+return(t);
+}
+  
+
+function gameOver(file)
+{
+          if (player1 > player2)
+              {
+              document.tictac.text.value = (" Game Over !" + name1 + " is the winner");
+              return;
+              }
+	  if (player1 < player2)
+	      {
+              document.tictac.text.value = (" Game Over !" + name2 + " is the winner");
+              return;
+	      }
+	  document.tictac.text.value = (" This is the end! No winner");
+	  return;
+}
+
+function changeAll(file,factor)
+{
+rdn = Math.random();
+name1_temp = prompt("Please write the first player's name ","player 1");  
+name2_temp = prompt("Please write the second player's name ","player 2");  
+game = factor;
+load_verbs_solutions(game);
+
+     k = 0;
+     for (i = 0; i < line; i++)
+     {
+         for (j =0; j < col; j++)
+         {
+         but = eval("file.b" + k);
+         but.value = verb[i][j];
+         empty[i][j]=-1;
+         k++;
+         }
+     }
+if (rdn >= .5)
+   {
+   name1 = name1_temp;
+   name2 = name2_temp;
+   file.text.value = name1 + ' IS PLAYING NOW';
+   file.player1_name.value = name1 ;
+   file.player2_name.value = name2 ;
+   }
+   else{
+       name1 = name2_temp;
+	   name2 = name1_temp;
+       file.text.value = name1 + ' IS PLAYING NOW';
+       file.player1_name.value = name1 ;
+       file.player2_name.value = name2 ;
+	   }
+	file.player1.value= ':' + player1;
+	file.player2.value= ':' + player2;
+
+}
+
+function changeAll_x(file,factor)
+{
+but = eval("file.b" + 0)
+    if (but.value == "          ")
+       {
+       alert("You have to START the game first");
+       return;
+       }
+
+if ((factor < 0)||(factor > 6))
+   {
+   alert('No more games !');
+   return;
+   }
+reset_vars(1);
+reset_vars(2);
+count_down = 30;
+player1 = 0;
+player2 = 0;
+file.player1.value= ':' + player1;
+file.player2.value= ':' + player2;
+t = turnchange(file,t);
+rdn = Math.random();
+game = factor;
+load_verbs_solutions(game);
+
+     k = 0;
+     for (i = 0; i < line; i++)
+     {
+         for (j =0; j < col; j++)
+         {
+         but = eval("file.b" + k);
+         but.value = verb[i][j];
+         empty[i][j]=-1;
+         k++;
+         }
+     }
+	file.player1.value= ':' + player1;
+	file.player2.value= ':' + player2;
+
+}
+function load_neighborsP(i,j,k)
+{
+array_neighbor = eval ("neighborP" + k );
+_counter = eval ('count_neighborP' + k );
+    if ((i+1)< line)
+       {
+       array_neighbor[_counter][0]=i+1; // stores x
+       array_neighbor[_counter][1]=j; // stores y
+       _counter++;
+       }
+    if ((i-1)>=0)
+       {
+       array_neighbor[_counter][0]=i-1; // stores x
+       array_neighbor[_counter][1]=j; // stores y
+       _counter++;
+       }
+    if ((j+1)<col)
+       {
+       array_neighbor[_counter][0]=i; // stores x
+       array_neighbor[_counter][1]=j+1; // stores y
+       _counter++;
+       }
+    if ((j-1)>=0)
+       {
+       array_neighbor[_counter][0]=i; // stores x
+       array_neighbor[_counter][1]=j-1; // stores y
+       _counter++;
+       }
+       
+if (k==1){count_neighborP1=_counter;}else{count_neighborP2=_counter;}       
+
+
+}
+
+function adjacent(i,j,p)
+{
+resp = false;
+    if ((i+1)<line)
+       {
+       if ((empty[i+1][j]==p)&&(empty[i][j]==-1)){resp = true;}
+       }
+    if ((i-1)>=0)
+       {
+       if ((empty[i-1][j]==p)&&(empty[i][j]==-1)){resp = true;}
+       }
+    if ((j+1)<col)
+       {
+       if ((empty[i][j+1]==p)&&(empty[i][j]==-1)){resp = true;}
+       }
+    if ((j-1)>=0)
+       {
+       if ((empty[i][j-1]==p)&&(empty[i][j]==-1)){resp = true;}
+       }
+
+if (!resp) {alert ("You didn't choose a valid adjacent position!");}
+return (resp);       
+}
+function change_b(file,i,j,k)
+{
+document.tictac.text.value += '\n' + ' countdown: \n ' + count_down ;
+
+if (t==1)
+   {
+   me = 1;
+   op = 2;
+   label_acerto = "  X  ";
+   label_row = 'XXXX';
+   label_empty_temp = 1;
+   label_empty = 'x';
+   }
+   else {
+        me = 2;
+        op = 1;
+		label_acerto = "  0  ";
+		label_row = 'OOOO';
+		label_empty_temp = 0;
+		label_empty = 'O';
+		}
+    acertosP = eval ('acertosP' + me);
+	but = eval("file.b" + k)
+    if (but.value == "          ")
+       {
+       alert("You have to START the game first");
+       return;
+       }
+    if ((but.value == "*****")||(but.value == 'XXXX')||(but.value == 'OOOO'))
+       {
+       alert("Wrong button!");
+       return;
+       }
+
+		  if (acertosP == 0)  
+            {
+            ans = prompt("PLEASE WRITE THE PAST SIMPLE FORM OF ",verb[i][j]);
+            if (ans == null){return;} // user pressed cancel button in the box....
+            if (ans == "")
+	           {
+               alert ( "WRITE YOUR ANSWER.");
+	           return;
+	           }
+            if (ans.toLowerCase() == solution[i][j]) 
+                {
+                  empty[i][j] = label_empty_temp;
+                  xo= label_acerto;
+                  acertosP++;
+				  count_down--;
+				  if (me == 1) {acertosP1++;}else{acertosP2++;} 
+                  but.value = xo;
+                  load_neighborsP(i,j,me);// load neighbours and check for deadlocks
+                  check_if_blocked(op);//check if blocked opponent
+                  if (check_if_blocked(me))
+                     {
+                     t = turnchange(file,t);
+                     }
+                  if (count_down == 0){gameOver(file)};
+                  return;
+                }
+            else 
+                {
+                alert (" Incorrect answer " );
+                t = turnchange(file,t);
+                return;
+                }
+             }// acertos > 0
+          else
+            {
+             if (adjacent(i,j,label_empty_temp))
+              {
+              ans = prompt("PLEASE WRITE THE PAST SIMPLE FORM OF ",verb[i][j]);
+              if (ans == null){return;} // user pressed cancel button in the box....
+              if (ans == "")
+	             {
+                 alert ( "WRITE YOUR ANSWER.");
+	             return;
+	             }
+              if ((ans.toLowerCase() == solution[i][j]) && (acertosP < 4))
+                 {
+                  empty[i][j] = label_empty_temp;
+                  xo= label_acerto;
+                  acertosP++;
+				  count_down--;
+				  if (me == 1) {acertosP1++;}else{acertosP2++;}
+                  but.value= xo;
+                  load_neighborsP(i,j,me);// load neighbours and check for deadlocks
+                  check_if_blocked(op);//check if blocked opponent
+                  if (check_if_blocked(me))
+                     {
+                     t = turnchange(file,t);
+                     }
+                  if (acertosP==4)
+                    {
+                    z=0;
+                     for (x=0 ; x< line; x++)
+                      {
+                        for (y=0 ;y < col; y++)
+                          {
+                           if ( empty [x][y]== label_empty_temp)
+                             {
+                             but = eval("file.b" + z);
+                             but.value = label_row;
+                             empty[x][y]= label_empty;
+                             }
+                             z++;
+                          }
+                       }
+                    updateScore(file,me,op);
+                    reset_vars(me)
+                    t = turnchange(file,t);
+                    if (count_down == 0){gameOver(file)};
+                    file.text.value = whogoesnow;        
+                    } 
+                    else  //acertosP < 4 
+                       {
+                       if (count_down == 0){gameOver(file)};
+                       return;
+                       } 
+                 }
+              else
+                 {
+                 alert (" Incorrect answer " );
+                 t = turnchange(file,t);
+                 file.text.value = whogoesnow        
+                 return;
+                 }
+              } // if adjacent
+             else
+              {
+              alert (" Choose an adjacent position" );
+              }
+             }// else of if acertosP > 0 .....
+
+         return;
+
+}
+</script>
+<center>
+<form name="tictac">
+    <input type="button" name="start" value=" start "
+ onclick="changeAll(this.form,game)"><br>
+    <input type="text" name="player1_name" size="20" value="Player 1">&nbsp;<input type="text" name="player1" size= 2 value=":0">
+    <br>
+    <input type="text" name="player2_name" size="20" value="Player 2">&nbsp;<input type="text" name="player2" size =2 value=":0">
+    <br>
+    </p>
+    <table border="1" cellspacing="1" cellpadding="5" style="border-collapse: collapse" bordercolor="#111111" width="550" height="0">
+        <tr>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b0" value="          "
+            onclick="change_b(tictac,0,0,0)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b1" value="          "
+            onclick="change_b(this.form,0,1,1)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b2" value="          "
+            onclick="change_b(this.form,0,2,2)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b3" value="          "
+            onclick="change_b(this.form,0,3,3)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b4" value="          "
+            onclick="change_b(this.form,0,4,4)"> </td>
+        </tr>
+        <tr>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b5" value="          "
+            onclick="change_b(tictac,1,0,5)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b6" value="          "
+            onclick="change_b(this.form,1,1,6)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b7" value="          "
+            onclick="change_b(this.form,1,2,7)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b8" value="          "
+            onclick="change_b(this.form,1,3,8)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b9" value="          "
+            onclick="change_b(this.form,1,4,9)"> </td>
+        </tr>
+        <tr>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b10" value="          "
+            onclick="change_b(tictac,2,0,10)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b11" value="          "
+            onclick="change_b(this.form,2,1,11)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b12" value="          "
+            onclick="change_b(this.form,2,2,12)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b13" value="          "
+            onclick="change_b(this.form,2,3,13)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b14" value="          "
+            onclick="change_b(this.form,2,4,14)"> </td>
+        </tr>
+        <tr>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b15" value="          "
+            onclick="change_b(tictac,3,0,15)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b16" value="          "
+            onclick="change_b(this.form,3,1,16)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b17" value="          "
+            onclick="change_b(this.form,3,2,17)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b18" value="          "
+            onclick="change_b(this.form,3,3,18)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b19" value="          "
+            onclick="change_b(this.form,3,4,19)"> </td>
+        </tr>
+        <tr>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b20" value="          "
+            onclick="change_b(tictac,4,0,20)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b21" value="          "
+            onclick="change_b(this.form,4,1,21)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b22" value="          "
+            onclick="change_b(this.form,4,2,22)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b23" value="          "
+            onclick="change_b(this.form,4,3,23)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b24" value="          "
+            onclick="change_b(this.form,4,4,24)"> </td>
+        </tr>
+        <tr>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b25" value="          "
+            onclick="change_b(tictac,5,0,25)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b26" value="          "
+            onclick="change_b(this.form,5,1,26)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="119"><input type="button" name="b27" value="          "
+            onclick="change_b(this.form,5,2,27)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b28" value="          "
+            onclick="change_b(this.form,5,3,28)"> </td>
+            <td align="center" bgcolor="#C8D5D5" width="120"><input type="button" name="b29" value="          "
+            onclick="change_b(this.form,5,4,29)"> </td>
+        </tr>
+
+    </table>
+<textarea name="text" rows=3 cols=40></textarea> <br>
+    Write in the box below the simple past form of one of the verbs and click on the corresponding button
+    <br>
+    &nbsp;<br>
+<input type="button" name="back" value=" back "
+ onclick="changeAll_x(this.form,game-6)">
+<input type="button" name="next" value=" next "
+ onclick="changeAll_x(this.form,game+6)">
+    <br>
+</form>
+</body>
+</html>

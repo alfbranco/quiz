@@ -1,0 +1,43 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/css.css">
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="scripts/maze.js"></script>
+    <script type="text/javascript" src="scripts/challenge.js"></script>
+    <script type="text/javascript" src="scripts/question.js"></script>
+
+    <script language="javascript">
+        $( document ).ready(function() {
+            maze = new Maze(5,7);
+            challenge = new Challenge()
+
+            maze.setChallenge(challenge)
+            maze.addDummyChallege()
+
+            content = maze.render();
+            $('body').html(content)
+
+            $('.question-handle').click(function(){
+                var question = null
+                var classList = $(this).attr('class').split(/\s+/)
+                $.each(classList, function(index, item) {
+                    item = item.split('-')
+                    if(item[0]=='id') {
+                        question = challenge.getQuestion(item[1])
+                    }
+                });
+                question.validate()
+            })
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

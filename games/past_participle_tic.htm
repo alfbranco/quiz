@@ -1,0 +1,372 @@
+<br>
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title>Página normal sem título</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+<script name="JavaScript">
+
+jogo = 1;
+player1=0;
+player2=0;
+var verb = new Array (18)
+
+   verb[0] = "see"
+   verb[1] = "drink"
+   verb[2] = "say"
+   verb[3] = "tell"
+   verb[4] = "speak"
+   verb[5] = "go"
+   verb[6] = "do"
+   verb[7] = "sell"
+   verb[8] = "swim"
+   verb[9] = "begin"
+   verb[10] = "break"
+   verb[11]= "bring"
+   verb[12] = "know"
+   verb[13] = "have"
+   verb[14] = "eat"
+   verb[15] = "forget"
+   verb[16] = "give"
+   verb[17] = "come"
+   verb[18] = "let"
+   verb[19] = "make"
+   verb[20] = "pay"
+   verb[21] = "put"
+   verb[22] = "read"
+   verb[23] = "send"
+   verb[24] = "sit"
+   verb[25] = "think"
+   verb[26] = "write"
+   verb[27] = "build"
+   verb[28] = "buy"
+   verb[29] = "fall"
+   verb[30] = "find"
+   verb[31] = "lose"
+   verb[32] = "sleep"
+   verb[33] = "take"
+   verb[34] = "think"
+   verb[35] = "get"
+      
+
+var Solution = new Array(18)
+
+   Solution[0] = "seen"
+   Solution[1] = "drunk"
+   Solution[2] = "said"
+   Solution[3] = "told"
+   Solution[4] = "spoken"
+   Solution[5] = "gone"
+   Solution[6] = "done"
+   Solution[7] = "sold"
+   Solution[8] = "swum"
+   Solution[9] = "begun"
+   Solution[10] = "broken"
+   Solution[11] = "brought"
+   Solution[12] = "known"
+   Solution[13] = "had"
+   Solution[14] = "eaten"
+   Solution[15] = "forgotten"
+   Solution[16] = "given"
+   Solution[17] = "come"
+   Solution[18] = "let"
+   Solution[19] = "made"
+   Solution[20] = "paid"
+   Solution[21] = "put"
+   Solution[22] = "read"
+   Solution[23] = "sent"
+   Solution[24] = "sat"
+   Solution[25] = "thought"
+   Solution[26] = "written"
+   Solution[27] = "built"
+   Solution[28] = "bought"
+   Solution[29] = "fallen"
+   Solution[30] = "found"
+   Solution[31] = "lost"
+   Solution[32] = "slept"
+   Solution[33] = "taken"
+   Solution[34] = "thought"
+   Solution[35] = "got"   
+var empty = new Array(9)
+
+    empty[0] = -1;
+    empty[1] = -1;
+    empty[2] = -1;
+    empty[3] = -1;
+    empty[4] = -1;
+    empty[5] = -1;
+    empty[6] = -1;
+    empty[7] = -1;
+    empty[8] = -1;
+
+function variables(){
+
+            //t = 1;
+       change = 1;
+    //
+
+}
+
+function win(file)
+{
+  if   (empty[0]==empty[1] && empty[1]==empty[2] && empty[2]==0 ||
+        empty[3]==empty[4] && empty[4]==empty[5] && empty[5]==0 ||
+        empty[6]==empty[7] && empty[7]==empty[8] && empty[8]==0 ||
+        empty[0]==empty[3] && empty[3]==empty[6] && empty[6]==0 ||
+        empty[1]==empty[4] && empty[4]==empty[7] && empty[7]==0 ||
+        empty[2]==empty[5] && empty[5]==empty[8] && empty[8]==0 ||
+        empty[0]==empty[4] && empty[4]==empty[8] && empty[8]==0 ||
+        empty[2]==empty[4] && empty[4]==empty[6] && empty[6]==0 )
+    {
+        alert (name1 + " You won!!!");
+        updateScore(file,++player1,player2);
+        jogo++;
+        if (jogo<=4)
+          {
+          nextGame(file,jogo);
+          reset();
+          }
+        else
+          {
+          gameOver(file);
+          }
+        return;
+    }
+  if   (empty[0]==empty[1] && empty[1]==empty[2] && empty[2]==1 ||
+        empty[3]==empty[4] && empty[4]==empty[5] && empty[5]==1 ||
+        empty[6]==empty[7] && empty[7]==empty[8] && empty[8]==1 ||
+        empty[0]==empty[3] && empty[3]==empty[6] && empty[6]==1 ||
+        empty[1]==empty[4] && empty[4]==empty[7] && empty[7]==1 ||
+        empty[2]==empty[5] && empty[5]==empty[8] && empty[8]==1 ||
+        empty[0]==empty[4] && empty[4]==empty[8] && empty[8]==1 ||
+        empty[2]==empty[4] && empty[4]==empty[6] && empty[6]==1 )
+    {
+        alert (name2 + " You won!!!");
+        updateScore(file,player1,++player2);
+        jogo++;
+        if (jogo<=3)
+          {
+          nextGame(file,jogo);
+          reset();
+          }
+        else
+          {
+          gameOver(file);
+          }
+        return;
+     }
+
+}
+function updateScore(file,pl1,pl2)
+{
+        file.player1.value= pl1;
+        file.player2.value= pl2;
+}
+function reset()
+{
+        for ( i=0; i<=8; i++)
+        {
+        empty[i]= -1;
+        }
+}
+function turnchange(t){
+  if (change == 1)  {
+    if (t == 0){
+        t = 1;
+        whogoesnow = name1 + " is playing now"
+    }
+    else {
+        t = 0;
+        whogoesnow = name2 + " is playing now"
+    }
+
+  }
+  else {
+    t = t;
+  }
+  change = 1
+  return (t);
+}
+
+function gameOver(file)
+{
+          if (player1 > player2)
+              {
+              alert (" Game Over !" + name1 + " is the winner");
+              updateScore(file,"","");
+              history.go(0);
+              return;
+              }
+          if (player1 < player2)
+              {
+              alert (" Game Over !" +  name2 + " is the winner");
+              updateScore(file,"","");
+              history.go(0);
+              return;
+              }
+          alert (" This is the end! No winner");
+          updateScore(file,"","");
+          history.go(0);
+
+}
+function nextGame(file,jog)
+{
+  if (jog == 1)      
+     {  
+      name1 = prompt("Please write the first player's name ","");
+      name2 = prompt("Please write the second player's name ","");
+        rdn = Math.random();
+        if (rdn >= .5)
+           {
+           file.whoseturn.value=name1;
+           t = 1;
+           }
+           else
+              {
+              file.whoseturn.value=name2;
+              t = 0;
+              }
+     }   
+  if ((file.b0.value == "          ")&&(jog != 1 ) )
+       {
+       alert("You have to START the game first");
+       jogo = 1;
+       return;
+       }
+
+  if (jog < 1)
+      {
+        alert (" This is the first game ");
+        jogo = 1;
+        return;
+      }
+  if (jog > 4)
+  {
+   gameOver(file);
+   return;
+  }
+  j= 0;
+  for ( i = (9*(jog-1)); i<=((9*jog)-1); i++)
+
+  {
+        but = eval("file.b" + j)
+        but.value = verb[i];
+        j++;
+  }
+  reset();
+}
+function change_b(file,pos)
+{
+    but = eval("file.b" + pos)
+    if (but.value == "          ")
+       {
+       alert("You have to START the game first")
+       return;
+       }
+    if ((empty[pos] ==0) || (empty[pos] == 1))
+        {
+        alert(" Opcao invalida");
+        return;
+        }
+    ans = file.answer.value;
+    if (ans == "")
+        {
+        alert ( "Write the answer in the box first. Then click on the correspomding button.");
+        return;
+        }
+
+    but = eval("file.b" + pos)
+    sol = pos + (9*(jogo-1));
+    if ((empty[pos] ==0) || (empty[pos] == 1))
+        {
+        alert(" Opcao invalida");
+        return;
+        }
+    ans = file.answer.value;
+    if (ans.toLowerCase() == Solution[sol])
+         {
+         if (t == 1)
+                {
+                  empty[pos] =0;
+                  xo= "  X  ";
+                }
+         else
+                {
+                  empty[pos] =1;
+                  xo= "  0  ";
+                }
+         t = turnchange(t) ;
+         but.value= xo;
+         file.whoseturn.value = whogoesnow
+         file.answer.value = "";
+         win(file);
+         return;
+         }
+    t = turnchange(t) ;
+    file.whoseturn.value = whogoesnow
+    file.answer.value = "";
+    return;
+
+}
+</script><script name="JavaScript">
+
+variables();
+
+
+</script>
+<center>
+<form name="tictac">
+    <br>
+    Player1: <input type="text" name="player1" size= 5>
+    <br>
+    Player2: <input type="text" name="player2" size =5>
+    <br>
+    </p>
+    <table border="1" cellspacing="10" cellpadding="10" style="border-collapse: collapse" bordercolor="#111111">
+        <tr>
+            <td bgcolor="#CCFFCC" align="center"><input type="button" name="b0" value="          "
+            onclick="change_b(tictac,0)"> </td>
+            <td bgcolor="#CCFFCC" align="center"><input type="button" name="b1" value="          "
+            onclick="change_b(this.form,1)"> </td>
+            <td bgcolor="#CCFFCC" align="center"><input type="button" name="b2" value="          "
+            onclick="change_b(this.form,2)"> </td>
+        </tr>
+        <tr>
+            <td bgcolor="#CCFFCC" align="center"><input type="button" name="b3" value="          "
+            onclick="change_b(this.form,3)"> </td>
+            <td bgcolor="#CCFFCC" align="center"><input type="button" name="b4" value="          "
+            onclick="change_b(this.form,4)"> </td>
+            <td bgcolor="#CCFFCC" align="center"><input type="button" name="b5" value="          "
+            onclick="change_b(this.form,5)"> </td>
+        </tr>
+        <tr>
+            <td bgcolor="#CCFFCC" align="center"><input type="button" name="b6" value="          "
+            onclick="change_b(this.form,6)"> </td>
+            <td bgcolor="#CCFFCC" align="center"><input type="button" name="b7" value="          "
+            onclick="change_b(this.form,7)"> </td>
+            <td bgcolor="#CCFFCC" align="center"><input type="button" name="b8" value="          "
+            onclick="change_b(this.form,8)"> </td>
+        </tr>
+    </table>
+    <p><br>
+    Write in the box below the simple past form of one of the verbs and click on the corresponding button
+    <br>
+    <p><input type="button" name="whoseturn"  value= " Player 1 is playing "> <br>
+    <input type="text" name="answer" value="" size = 10>
+    </p>
+<input type="button" name="start" value=" start "
+ onclick="nextGame(this.form,jogo)">
+    <br>
+<input type="button" name="back" value=" back "
+ onclick="nextGame(this.form,--jogo)">
+<input type="button" name="next" value=" next "
+ onclick="nextGame(this.form,++jogo)">
+    <br>
+</form>
+</body>
+</html>
