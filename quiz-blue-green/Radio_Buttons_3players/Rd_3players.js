@@ -106,7 +106,9 @@ function disableBtns(file)
                             thebtn.disabled=true;
                         }
                     }
-
+    document.tictac.player1_name.select();
+    document.tictac.player2_name.select();
+    document.tictac.player3_name.select();
 }
 function addClass(element, classToAdd) {
     var currentClassValue = element.className;
@@ -512,66 +514,64 @@ function gameOver(file) {
 }
 
 function changeAll(file) {
-var start = document.getElementById('st');
-start.disabled=true;
+    var start = document.getElementById('st');
+    start.disabled=true;
     rdn = Math.random();
-    name1_temp = prompt("Please write the 1a player's name ", "player 1");
-    name2_temp = prompt("Please write the 2 player's name ", "player 2");
-    name3_temp = prompt("Please write the third player's name ", "player 3");
+    //name1_temp = prompt("Please write the 1a player's name ", "player 1");
+    //name2_temp = prompt("Please write the 2 player's name ", "player 2");
+    //name3_temp = prompt("Please write the third player's name ", "player 3");
     var headerPname = document.getElementById('header_player');
     for (i = 0; i < line; i++) {
         for (j = 0; j < col; j++) {
             id = ('btn-' + i + j);
-			var thebtn = document.getElementById(id);
+            var thebtn = document.getElementById(id);
             thebtn.value=verb[i][j];
             thebtn.disabled = false;
         }
     }
+    name1 = file.player1_name.value;
+    name2 = file.player2_name.value;
+    name3 = file.player3_name.value;
+
     if (rdn <= .3) {
-        name1 = name1_temp;
-        name2 = name2_temp;
-        name3 = name3_temp;
-        //file.text.value = name1 + ' IS PLAYING NOW \n';
+
+
         headerPname.innerHTML = name1;
-        file.player1_name.value = name1;
+        file.player1_name.disabled = true;
         file.player1_name.select();
-        file.player2_name.value = name2;
-        file.player3_name.value = name3;
+        file.player2_name.disabled = true;
+        file.player3_name.disabled = true;
         t=1;
-    } else { 
-           if ((rdn > .3 ) && (rdn<= .7))
-              {           
-              name1 = name1_temp;
-              name2 = name2_temp;
-              name3 = name3_temp;              
-              //file.text.value = name2 + ' IS PLAYING NOW \n';
-              headerPname.innerHTML = name2;
-              file.player1_name.value = name1;
-              file.player2_name.value = name2;
-              file.player2_name.select();
-              file.player3_name.value = name3;
-              t=0;
-              }
-              else {
-                   name1 = name1_temp;
-                   name2 = name2_temp;
-                   name3 = name3_temp;
-                   //file.text.value = name3 + ' IS PLAYING NOW \n';
-                   headerPname.innerHTML = name3;
-                   file.player1_name.value = name1;
-                   file.player2_name.value = name2;
-                   file.player3_name.value = name3;
-                   file.player3_name.select();
-                   t=2;
-                   }
+    } else {
+        if ((rdn > .3 ) && (rdn<= .7))
+        {
+
+
+            headerPname.innerHTML = name2;
+            file.player1_name.disabled = true;
+            file.player2_name.disabled = true;
+            file.player2_name.select();
+            file.player3_name.disabled = true;
+            t=0;
+        }
+        else {
+
+
+            headerPname.innerHTML = name3;
+            file.player1_name.disabled = true;
+            file.player2_name.disabled = true;
+            file.player3_name.disabled = true;
+            file.player3_name.select();
+            t=2;
+        }
     }
     file.player1.value = ':' + player1;
     file.player2.value = ':' + player2;
     file.player3.value = ':' + player3;
 //document.getElementsByName('ansRdBtn').disable();
 //document.getElementById('ansRdBtn').style.display = 'none';
-var radioButtonContainer = document.getElementById('radioButtonContainer');
-radioButtonContainer.style.display = 'none';
+    var radioButtonContainer = document.getElementById('radioButtonContainer');
+    radioButtonContainer.style.display = 'none';
 
 
 }
@@ -620,7 +620,8 @@ function sweepGrid()
                             id = ('btn-' + x + y);
 							var thebtn = document.getElementById(id);
                             var nome = thebtn.className;
-                            if (isDead(thebtn)) 
+                            //alert ('cheking btn = ' + id);
+                              if (isDead(thebtn))
                                {
 								thebtn.disabled = true;								       
 								}else{									       
@@ -748,6 +749,7 @@ var file = document.tictac;
                 mark_blocked(btn_color);
                 reset_vars(me);
                 t = turnchange();
+                alert ('current player blocked and turn was changed and grid was swept');
                } 
             if ((nextStuck == true)&&(acertosNext > 0)) 
                {
@@ -838,10 +840,7 @@ file.text.value =  '';
 
 var radioButtonContainer = document.getElementById('radioButtonContainer');
 radioButtonContainer.style.display = '';
-var rdBtans = document.getElementsById('ansRd');
-    rdBtans[0].checked = false;		  
-    rdBtans[1].checked = false;
-    rdBtans[2].checked = false;
+
     //ans = prompt("PLEASE WRITE  /d/    /t/  or  id ", verb[i][j]);
     //if (ans == null) {return;} // user pressed cancel button in the box....
     //if (ans == "") {alert("WRITE YOUR ANSWER."); return; }// user entered a blank answers....*/
