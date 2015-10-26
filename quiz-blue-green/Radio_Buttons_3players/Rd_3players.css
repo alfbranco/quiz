@@ -1,3 +1,9 @@
+body {
+    background-image: url(mindmap.png);
+    background-position: center top;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
 .dark_button {
     border-top: 1px solid #ececec;
     background: #c8d5d5;
